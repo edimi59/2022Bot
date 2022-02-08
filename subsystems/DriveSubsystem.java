@@ -17,11 +17,6 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
   public void driveBot(double left, double right) {
     leftFrontMotor.set(ControlMode.PercentOutput, left);
     leftRearMotor.follow(leftFrontMotor);
