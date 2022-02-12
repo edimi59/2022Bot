@@ -12,15 +12,23 @@ public class DriveSubsystem extends SubsystemBase {
   TalonFX rightFrontMotor = new TalonFX(0);
   TalonFX rightRearMotor = new TalonFX(1);
   public DriveSubsystem() {}
-
+  private double applyDeadband(double deadBand){
+  if (Math.abs(deadBand)<.05){
+    return 0;
+// your mother
+  }
+  else{
+    return deadBand;
+  }
+}
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
   public void driveBot(double left, double right) {
-    leftFrontMotor.set(ControlMode.PercentOutput, left);
+    leftFrontMotor.set(ControlMode.PercentOutput,applyDeadband(left));
     leftRearMotor.follow(leftFrontMotor);
-    rightFrontMotor.set(ControlMode.PercentOutput, right);
+    rightFrontMotor.set(ControlMode.PercentOutput, applyDeadband(right));
     rightRearMotor.follow(rightFrontMotor);
 
   }
