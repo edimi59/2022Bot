@@ -15,7 +15,6 @@ public class DriveSubsystem extends SubsystemBase {
   private double applyDeadband(double deadBand){
   if (Math.abs(deadBand)<.05){
     return 0;
-// your mother
   }
   else{
     return deadBand;
