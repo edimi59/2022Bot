@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.ShootingCommand;
+import frc.robot.subsystems.ShootingSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
