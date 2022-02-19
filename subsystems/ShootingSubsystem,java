@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
-//import com.ctre.phoenix.motorcontrol.can.TalonFX;
 //import edu.wpi.first.wpilibj.Encoder;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -20,19 +20,30 @@ public class ShootingSubsystem extends SubsystemBase {
      double x=tx.getDouble(0); //make a double 'x' variable ; if it doesnt find the value set it to 0
         return x;}
 
-  private TalonFX Motor = new TalonFX(5);
-
-  public void move(double distance){
-
-    if (distance > Constants.aimErrorTolerance) {
-        System.out.println("moving right");
-     Motor.set(ControlMode.PercentOutput, 0.15);}
+  public TalonFX shootingMotor = new TalonFX(5); //motor 
+  public double GetEncoderValue(){
         
-      else if (distance < -Constants.aimErrorTolerance){
+    return shootingMotor.getSelectedSensorPosition();} // get the position of the shooter
+
+  public void move(double xdistance){ //move the shooter to an aiming position
+
+    if (xdistance > Constants.aimErrorTolerance) {
+        System.out.println("moving right");
+        
+     shootingMotor.set(ControlMode.PercentOutput, 0.15);}
+        
+      else if ( xdistance < -Constants.aimErrorTolerance){
         System.out.println("moving left");
-        Motor.set(ControlMode.PercentOutput, -0.15);
+        shootingMotor.set(ControlMode.PercentOutput, -0.15);
+      } 
+
+      else if(xdistance<0 && xdistance> - Constants.aimErrorTolerance){
+        shootingMotor.set(ControlMode.PercentOutput, -0.03);
       }
       
+      else if(xdistance>0 && xdistance< Constants.aimErrorTolerance){
+        shootingMotor.set(ControlMode.PercentOutput, 0.03);
+      }
   }
   
 
