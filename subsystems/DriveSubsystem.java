@@ -31,4 +31,7 @@ public class DriveSubsystem extends SubsystemBase {
     rightRearMotor.follow(rightFrontMotor);
 
   }
+  public double getLeftFrontPos(){
+      return leftFrontMotor.getSelectedSensorPosition();
+  }
 }
