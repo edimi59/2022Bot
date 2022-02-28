@@ -9,7 +9,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 public class DriveSubsystem extends SubsystemBase {
   TalonFX leftFrontMotor = new TalonFX(3);
   TalonFX leftRearMotor = new TalonFX(2);
-  TalonFX rightFrontMotor = new TalonFX(0);
+  TalonFX rightFrontMotor = new TalonFX(5);
   TalonFX rightRearMotor = new TalonFX(1);
   public DriveSubsystem() {}
   private double applyDeadband(double deadBand){

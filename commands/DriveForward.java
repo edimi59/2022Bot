@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
@@ -29,17 +30,12 @@ public class DriveForward extends CommandBase {
   @Override
   public void execute() {
     System.out.println("Drive Forward " + " Front Left Motor Pos: " + m_DriveSubsystem.getLeftFrontPos());
-     if (m_DriveSubsystem.getLeftFrontPos() < 0) {
-        m_DriveSubsystem.driveBot(-.1,.1);
-     }
-     else {
-        m_DriveSubsystem.driveBot(0,0);
-     }
+    m_DriveSubsystem.driveBot(-.1,.1);
   }
   @Override
   public boolean isFinished() {
     
-      if (m_DriveSubsystem.getLeftFrontPos() > 50000){
+      if (m_DriveSubsystem.getLeftFrontPos() > Constants.autoDistance){
         System.out.println("Drive Forward end");
         return true;
       }

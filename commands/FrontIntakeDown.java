@@ -28,12 +28,12 @@ public class FrontIntakeDown extends CommandBase {
     m_FrontIntakeSubsystem.moveIntake("down");
   }
   @Override
-public boolean isFinished() {
-    if (m_FrontIntakeSubsystem.getFrontIntakePos() > 2000){
-      return true;
-    }
-    else {return false;}
-  }
+ public boolean isFinished() {
+     if (m_FrontIntakeSubsystem.getFrontIntakePos() > 11000   ){
+       return true;
+     }
+     else {return false;}
+   }
 
   // Called once the command ends or is interrupted.
   @Override

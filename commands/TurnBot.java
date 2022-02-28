@@ -25,7 +25,9 @@ public class TurnBot extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    gyro.reset();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -39,7 +41,7 @@ public class TurnBot extends CommandBase {
 }
 @Override
 public boolean isFinished() {
-    if (gyro.getAngle() < 180){
+    if (gyro.getAngle() > 180){
       return true;
     }
     else {return false;}
