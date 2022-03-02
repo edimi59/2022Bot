@@ -79,7 +79,9 @@ public class RobotContainer {
   private final ClimberDown m_ClimberDown = new ClimberDown(m_ClimberSubsystem);
   private final ClimberStop m_ClimberStop = new ClimberStop(m_ClimberSubsystem);
 
+  
   private final SequentialCommandGroup AutoCommand = new SequentialCommandGroup(new FrontIntakeDown(m_FrontintakeSubsystem), new IntakeOn(m_FrontintakeSubsystem),new DriveForward(m_driveSubsystem), new TurnBot(m_driveSubsystem),new Aim(m_ShootingSubsystem), new Shoot(m_ShootingSubsystem));
+  
   private Joystick xbox = new Joystick(0);
   private Joystick logitech = new Joystick(1);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

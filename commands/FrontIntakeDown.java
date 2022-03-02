@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.FrontIntakeSubsystem;
 /** An example command that uses an example subsystem. */
 public class FrontIntakeDown extends CommandBase {
@@ -29,7 +30,7 @@ public class FrontIntakeDown extends CommandBase {
   }
   @Override
  public boolean isFinished() {
-     if (m_FrontIntakeSubsystem.getFrontIntakePos() > 11000   ){
+     if (m_FrontIntakeSubsystem.getFrontIntakePos() > Constants.frontIntakePosStop){
        return true;
      }
      else {return false;}

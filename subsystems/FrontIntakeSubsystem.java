@@ -20,10 +20,10 @@ public class FrontIntakeSubsystem extends SubsystemBase {
   }
   public void moveIntake(String direction) {
     if (direction == "up") {
-        intakeMover.set(ControlMode.PercentOutput, -.17);
+        intakeMover.set(ControlMode.PercentOutput, -Constants.intakeMoverSpeed);
     }
     else if (direction == "down") {
-        intakeMover.set(ControlMode.PercentOutput, .17);
+        intakeMover.set(ControlMode.PercentOutput, Constants.intakeMoverSpeed);
     }
     else if (direction == "stop") {
         intakeMover.set(ControlMode.PercentOutput, 0);

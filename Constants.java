@@ -18,10 +18,16 @@ public final class Constants {
     public static double turretSpeed = 1;
     public static double shortShooterSpeed = -.4;
     public static double normalShooterSpeed = -.865;
-    public static double shooterIntakeSpeed = -.75;
+    public static double shooterIntakeSpeed = -.5;
     public static double frontIntakeSpeed = .5;
     public static double climberSpeed = .8;
     public static double intakeSpeed = .5;
     public static double intakeMoverSpeed = .17;
+    public static double turnAngle = 180;
+    public static double velocityThreshold = -10000;
+    public static double shortVelocityThreshold = -5000;
+    // dont edit
+    public static double frontIntakePosStop = 28600;
 
+    
 }
