@@ -7,13 +7,12 @@ package frc.robot.commands;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.ADIS16470_IMU;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 /** An example command that uses an example subsystem. */
 public class TurnBot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveSubsystem m_DriveSubsystem;
-  //public ADIS16470_IMU gyro = new ADIS16470_IMU();
-  /**
+public ADXRS450_Gyro gyro = new ADXRS450_Gyro();  /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
@@ -33,21 +32,16 @@ public class TurnBot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //System.out.println(gyro.getAngle());
-    //if (gyro.getAngle() < 180){
-    // m_DriveSubsystem.driveBot(.5, .5);
-    //}
-  //else{
-   //  m_DriveSubsystem.driveBot(0, 0);
-  //}
+    System.out.println(gyro.getAngle());
+    m_DriveSubsystem.driveBot(.5, .5);
+  
 }
 @Override
 public boolean isFinished() {
-    //if (gyro.getAngle() > Constants.turnAngle){
-    //  return true;
-   // }
-   // else {return false;}
-   return true;
+    if (gyro.getAngle() > Constants.turnAngle || gyro.getAngle() < -Constants.turnAngle){
+      return true;
+   }
+    else {return false;}
   }
   public void end(boolean interrupted){
     System.out.println("turn stop");
