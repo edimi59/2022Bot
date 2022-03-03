@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.ADIS16470_IMU;
 public class TurnBot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveSubsystem m_DriveSubsystem;
-  private ADIS16470_IMU gyro;
+  //public ADIS16470_IMU gyro = new ADIS16470_IMU();
   /**
    * Creates a new ExampleCommand.
    *
@@ -27,25 +27,27 @@ public class TurnBot extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    gyro.reset();
+    //gyro.reset();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (gyro.getAngle() < 180){
-     m_DriveSubsystem.driveBot(.1, .1);
-  }
-  else{
-     m_DriveSubsystem.driveBot(0, 0);
-  }
+    //System.out.println(gyro.getAngle());
+    //if (gyro.getAngle() < 180){
+    // m_DriveSubsystem.driveBot(.5, .5);
+    //}
+  //else{
+   //  m_DriveSubsystem.driveBot(0, 0);
+  //}
 }
 @Override
 public boolean isFinished() {
-    if (gyro.getAngle() > Constants.turnAngle){
-      return true;
-    }
-    else {return false;}
+    //if (gyro.getAngle() > Constants.turnAngle){
+    //  return true;
+   // }
+   // else {return false;}
+   return true;
   }
   public void end(boolean interrupted){
     System.out.println("turn stop");

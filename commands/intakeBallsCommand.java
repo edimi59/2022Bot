@@ -27,6 +27,8 @@ public class intakeBallsCommand extends CommandBase {
     System.out.println("Intake balls");
     m_IntakeSubsystem.IntakeBalls();
   }
-
+  public boolean isFinished() {
+    return true;
+  }
   // Called once the command ends or is interrupted.
 }

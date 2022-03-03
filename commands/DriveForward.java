@@ -21,16 +21,15 @@ public class DriveForward extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
-
-  // Called when the command is initially scheduled.
-  @Override
+@Override
   public void initialize() {}
+  
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("Drive Forward " + " Front Left Motor Pos: " + m_DriveSubsystem.getLeftFrontPos());
-    m_DriveSubsystem.driveBot(-.1,.1);
+   System.out.println("Drive Forward " + " Front Left Motor Pos: " + m_DriveSubsystem.getLeftFrontPos());
+    m_DriveSubsystem.driveBot(.1,-.1);
   }
   @Override
   public boolean isFinished() {

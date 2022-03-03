@@ -107,6 +107,9 @@ public class ShootingSubsystem extends SubsystemBase {
     // H2 104 inches
     return distance;
   }
+  public void resetSensor(){
+    Motor.setSelectedSensorPosition(0);
+  }
     // Encoder encoder = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
     /*
     TalonFX shootingMotor = new TalonFX(5);
