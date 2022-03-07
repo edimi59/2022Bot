@@ -110,6 +110,10 @@ public class ShootingSubsystem extends SubsystemBase {
   public void resetSensor(){
     Motor.setSelectedSensorPosition(0);
   }
+  public double getVelocity(){
+    double vel = shooter.getSelectedSensorVelocity();
+    return vel;
+  }
     // Encoder encoder = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
     /*
     TalonFX shootingMotor = new TalonFX(5);

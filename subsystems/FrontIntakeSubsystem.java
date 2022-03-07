@@ -36,6 +36,9 @@ public class FrontIntakeSubsystem extends SubsystemBase {
       double position = intakeMover.getSelectedSensorPosition();
       return position;
   }
+  public void setFrontIntakePos(){
+    intakeMover.setSelectedSensorPosition(0);
+}
 
   @Override
   public void periodic() {

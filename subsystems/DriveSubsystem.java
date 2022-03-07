@@ -5,7 +5,6 @@
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 public class DriveSubsystem extends SubsystemBase {
@@ -36,4 +35,7 @@ public class DriveSubsystem extends SubsystemBase {
   public double getLeftFrontPos(){
       return leftFrontMotor.getSelectedSensorPosition();
   }
+  public void setLeftFrontPos(){
+     leftFrontMotor.setSelectedSensorPosition(0);
+}
 }

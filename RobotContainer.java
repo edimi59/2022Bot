@@ -34,6 +34,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FrontIntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -80,7 +81,8 @@ public class RobotContainer {
   private final ClimberStop m_ClimberStop = new ClimberStop(m_ClimberSubsystem);
 
   
-  private final SequentialCommandGroup AutoCommand = new SequentialCommandGroup(new FrontIntakeDown(m_FrontintakeSubsystem), new IntakeOn(m_FrontintakeSubsystem), new intakeBallsCommand(m_intakeSubsystem), new DriveForward(m_driveSubsystem), new IntakeOff(m_FrontintakeSubsystem),new FrontIntakeUp(m_FrontintakeSubsystem),new TurnBot(m_driveSubsystem),new Aim(m_ShootingSubsystem), new Shoot(m_ShootingSubsystem));
+//  private final SequentialCommandGroup AutoCommand = new SequentialCommandGroup(new FrontIntakeDown(m_FrontintakeSubsystem), new IntakeOn(m_FrontintakeSubsystem), new intakeBallsCommand(m_intakeSubsystem), new DriveForward(m_driveSubsystem), new IntakeOff(m_FrontintakeSubsystem),new FrontIntakeUp(m_FrontintakeSubsystem),new TurnBot(m_driveSubsystem),new Aim(m_ShootingSubsystem), new Shoot(m_ShootingSubsystem));
+private final SequentialCommandGroup AutoCommand = new SequentialCommandGroup(new intakeBallsCommand(m_intakeSubsystem), new Shoot(m_ShootingSubsystem), new WaitCommand(5), new DriveForward(m_driveSubsystem), new ShooterOff(m_ShootingSubsystem));
 
   private Joystick xbox = new Joystick(0);
   private Joystick logitech = new Joystick(1);
@@ -99,8 +101,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     m_driveSubsystem.setDefaultCommand(m_driveCommand);
     //m_intakeSubsystem.setDefaultCommand(m_intakeballscommand);
-    m_ShootingSubsystem.setDefaultCommand(m_turnTurretStop);
-    m_ClimberSubsystem.setDefaultCommand(m_ClimberStop);
+    //m_ShootingSubsystem.setDefaultCommand(m_turnTurretStop);
+    //m_ClimberSubsystem.setDefaultCommand(m_ClimberStop);
    // POVButton dpadUp = new POVButton(xbox, 0);
    // POVButton dpadDown = new POVButton(xbox, 180);
    // JoystickButton buttonA = new JoystickButton(xbox, 1);
@@ -129,9 +131,9 @@ public class RobotContainer {
 
 
     logiUp
-      .whenHeld(m_FrontIntakeUp);
+      .whileActiveContinuous(m_FrontIntakeUp);
     LogiDown
-      .whenHeld(m_FrontIntakeDown);
+      .whileActiveContinuous(m_FrontIntakeDown);
     button10
       .whenHeld(m_IntakeOn);
     button9
@@ -142,16 +144,16 @@ public class RobotContainer {
       .whileActiveContinuous(m_shoot);
     buttonTrigger
       .whenReleased(m_shooterOff);
-    buttonThumb
-      .whileActiveContinuous(m_aim);
+    //buttonThumb
+      //.whileActiveContinuous(m_aim);
     button5
       .whenHeld(m_ToggleMidOff);
     button6
       .whenHeld(m_ToggleMidOn);
-    button8
-      .whenHeld(m_turnTurretLeft);
-    button7
-      .whenHeld(m_turnTurretRight);
+    //button8
+     // .whenHeld(m_turnTurretLeft);
+    //button7
+    //  .whenHeld(m_turnTurretRight);
     button12
       .whenPressed(m_intakeballscommand);
     button11

@@ -22,19 +22,22 @@ public class DriveForward extends CommandBase {
     addRequirements(subsystem);
   }
 @Override
-  public void initialize() {}
+  public void initialize() {
+    m_DriveSubsystem.setLeftFrontPos();
+    System.out.println("Left front pos" + m_DriveSubsystem.getLeftFrontPos());
+  }
   
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
    System.out.println("Drive Forward " + " Front Left Motor Pos: " + m_DriveSubsystem.getLeftFrontPos());
-    m_DriveSubsystem.driveBot(.1,-.1);
+    m_DriveSubsystem.driveBot(-.3,.3);
   }
   @Override
   public boolean isFinished() {
     
-      if (m_DriveSubsystem.getLeftFrontPos() > Constants.autoDistance){
+      if (m_DriveSubsystem.getLeftFrontPos() < Constants.autoDistance){
         System.out.println("Drive Forward end");
         return true;
       }

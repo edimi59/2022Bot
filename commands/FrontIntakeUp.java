@@ -30,10 +30,10 @@ public class FrontIntakeUp extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public boolean isFinished() {
-      if (m_FrontIntakeSubsystem.getFrontIntakePos() < 15){
-        return true;
-      }
-      else {return false;}
+      //if (m_FrontIntakeSubsystem.getFrontIntakePos() > 15){
+        //return true;
+      //}
+      return false;
     }
   @Override
   public void end(boolean interrupted){

@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import frc.robot.Constants;
 import frc.robot.subsystems.ShootingSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
@@ -26,6 +27,13 @@ public class Shoot extends CommandBase {
   public void execute() {
     System.out.println("shoot");
      m_ShootingSubsystem.setShooter(true);
+  }
+  @Override
+  public boolean isFinished() {
+    if (m_ShootingSubsystem.getVelocity() < Constants.velocityThreshold){
+      return true;
+    }
+    else {return false;}
   }
   // Called once the command ends or is interrupted.
 }

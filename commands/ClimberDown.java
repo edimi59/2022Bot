@@ -26,6 +26,10 @@ public class ClimberDown extends CommandBase {
   public void execute() {
     m_ClimberSubsystem.retract();
   }
+  @Override
+  public void end(boolean interrupted){
+    m_ClimberSubsystem.stop();
+  }
   // Called once the command ends or is interrupted.
 }
 

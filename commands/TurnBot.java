@@ -33,7 +33,7 @@ public ADXRS450_Gyro gyro = new ADXRS450_Gyro();  /**
   @Override
   public void execute() {
     System.out.println(gyro.getAngle());
-    m_DriveSubsystem.driveBot(.5, .5);
+    m_DriveSubsystem.driveBot(.2, .2);
   
 }
 @Override

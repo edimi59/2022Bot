@@ -26,6 +26,10 @@ public class ClimberUp extends CommandBase {
   public void execute() {
     m_ClimberSubsystem.climb();
   }
+  @Override
+  public void end(boolean interrupted){
+    m_ClimberSubsystem.stop();
+  }
   // Called once the command ends or is interrupted.
 }
 
