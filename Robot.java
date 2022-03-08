@@ -4,9 +4,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj2.command.Command;
+//import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -15,10 +19,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
-
   private RobotContainer m_robotContainer;
-
+  private SequentialCommandGroup m_autonomousCommand;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -28,6 +30,9 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    UsbCamera camera = CameraServer.startAutomaticCapture();
+    camera.setResolution(320, 240);
+
   }
 
   /**
@@ -48,25 +53,27 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
-
+  public void disabledInit() {
+   enableMotors(false);}
   @Override
   public void disabledPeriodic() {}
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
+  /** This function is called periodically during autonomous. */
   @Override
   public void autonomousInit() {
+    enableMotors(true);
     m_autonomousCommand = m_robotContainer.getAuto();
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
+    
       m_autonomousCommand.schedule();
-    }
+  
   }
-
-  /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    
+  }
 
   @Override
   public void teleopInit() {
@@ -74,14 +81,21 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
+    enableMotors(true);
+    if (m_autonomousCommand != null){
       m_autonomousCommand.cancel();
     }
+    
+    
   }
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    
+    
+
+  }
 
   @Override
   public void testInit() {
@@ -93,11 +107,15 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {}
 
-  /** This function is called once when the robot is first started up. */
-  @Override
-  public void simulationInit() {}
+  private void enableMotors(boolean on) {
+    NeutralMode mode;
+    if (on) {
+      mode = NeutralMode.Brake;
+    } else {
+      mode = NeutralMode.Coast;
+    }
+    leftFrontMotor.setNeutralMode(mode);
+    rightFrontMotor.setNeutralMode(mode);
 
-  /** This function is called periodically whilst in simulation. */
-  @Override
-  public void simulationPeriodic() {}
-}
+    
+}}
