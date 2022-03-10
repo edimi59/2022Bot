@@ -38,7 +38,7 @@ public class FrontIntakeUp extends CommandBase {
   @Override
   public void end(boolean interrupted){
     System.out.println("Intake stop");
-      m_FrontIntakeSubsystem.moveIntake("stop");
+      m_FrontIntakeSubsystem.moveIntake("stopUp");
   }
 
 }
