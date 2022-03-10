@@ -27,7 +27,10 @@ public final class Constants {
     public static double velocityThreshold = -6500;
     public static double shortVelocityThreshold = -5000;
     // dont edit
+    public static double intakeStayingUpSpeed=0.01; //speed of the frontIntakeMover when up
     public static double frontIntakePosStop = 28600;
-
+    public static double ticks2feetDrive= 0.0022818;
+    public static double distanceTocargoRing= 7.2; //distance from the hoops(beginning autonomus position) to the cargo ring(the ball position)
+    
     
 }
